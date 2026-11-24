@@ -1,21 +1,186 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Mi proyecto</title>
-  <!-- El nombre tiene que coincidir con el del archivo: style.css -->
+  <meta name="theme-color" content="#f7f6f1">
+  <meta name="description" content="Una exploración de los registros de Tiempo de uso por aplicación y franja horaria, del 20 de octubre al 3 de noviembre de 2026.">
+  <title>¿Cómo se distribuye mi actividad digital en función de la hora del día?</title>
   <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
 </head>
 <body>
+  <header class="site-header">
+    <a class="wordmark" href="#inicio" aria-label="Inicio">J<span>·</span></a>
+    <nav aria-label="Navegación principal">
+      <a href="#pregunta">Pregunta de investigación</a>
+      <a href="#datos">Datos</a>
+      <a href="#horas">Distribución horaria</a>
+      <a href="#patrones">Patrones</a>
+      <a href="#comportamiento">Comportamiento</a>
+      <a href="#conclusiones">Conclusiones</a>
+      <a href="#narrativa">Narrativa visual</a>
+    </nav>
+    <span class="header-period">OCT — NOV 2026</span>
+  </header>
 
-  <h1>El título de mi proyecto</h1>
-  <p>Una frase que explica de qué trata.</p>
+  <main id="inicio">
+    <section id="pregunta" class="hero section-shell">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="live-dot"></span> PREGUNTA DE INVESTIGACIÓN</p>
+        <h1>¿Cómo se distribuye mi actividad digital en función de la hora del día?</h1>
+        <p class="hero-intro">Este proyecto analiza cómo se distribuye mi actividad digital en función de la hora del día, a partir de la recopilación de datos de uso de mi teléfono móvil durante 15 días. Mediante la clasificación del tiempo dedicado a cada aplicación y su distribución en diferentes franjas horarias, busco identificar patrones de comportamiento y observar cómo varían mis hábitos digitales a lo largo de la jornada. El objetivo es descubrir qué aplicaciones predominan en cada momento del día, cuándo concentro mayor actividad y cómo cambia mi consumo digital desde que empieza el día hasta que termina.</p>
+      </div>
+      <div class="stat-rotator" aria-label="Estadísticas relacionadas con el proyecto">
+        <div class="stat-rotator-top"><span id="stat-counter" class="eyebrow">01 / 04</span><div class="stat-controls"><button id="stat-prev" type="button" aria-label="Dato anterior">←</button><button id="stat-next" type="button" aria-label="Dato siguiente">→</button></div></div>
+        <p id="rotating-stat-text" aria-live="polite"></p>
+        <a id="rotating-stat-source" href="#patrones" target="_blank" rel="noopener">Fuente</a>
+        <div id="stat-dots" class="stat-dots" aria-label="Elegir dato"></div>
+      </div>
+      <div class="hero-foot"><span>20 OCT — 03 NOV 2026</span></div>
+    </section>
 
-  <button id="boton">Ver mi pregunta</button>
-  <p id="texto" hidden>Aquí va mi pregunta de investigación.</p>
+    <section id="datos" class="overview section-shell">
+      <div class="section-heading">
+        <div><p class="eyebrow">02 — LOS DATOS</p><h2>El registro<br><em>día a día.</em></h2></div>
+        <p class="section-note">Registros de Tiempo de uso del iPhone durante 15 días, organizados por aplicación, hora y total diario.</p>
+      </div>
+      <div class="stat-row" aria-label="Resumen del conjunto de datos">
+        <div class="stat"><strong>15</strong><span>días registrados</span></div>
+        <div class="stat"><strong>120</strong><span>registros por app y franja</span></div>
+        <div class="stat"><strong>7</strong><span>aplicaciones</span></div>
+        <div class="stat"><strong>15</strong><span>totales diarios</span></div>
+      </div>
+      <div class="chart-card daily-card">
+        <div class="chart-title-row">
+          <div><h3>Tiempo de uso diario</h3><p>Horas y minutos por día</p></div>
+        </div>
+        <div id="daily-chart" class="daily-chart" role="group" aria-label="Gráfico interactivo del tiempo total diario"></div>
+        <div class="chart-footer"><span>20 OCT — 03 NOV 2026</span><span>TIEMPO TOTAL POR DÍA</span></div>
+      </div>
+    </section>
 
-  <!-- El JavaScript va al final, cuando la página ya está cargada -->
-  <script src="script.js"></script>
+    <section id="horas" class="explorer-section">
+      <div class="section-shell">
+        <div class="section-heading explorer-heading">
+          <div><p class="eyebrow">03 — DISTRIBUCIÓN HORARIA</p><h2>¿Qué aparece<br><em>en cada franja?</em></h2></div>
+          <p class="section-note">La duración mostrada corresponde a toda la franja anotada, no solo a la hora seleccionada.</p>
+        </div>
+        <div class="chart-card clock-chart-card">
+          <div class="chart-title-row"><div><h3>La actividad a lo largo del día</h3><p>Media diaria de minutos registrados por hora y aplicación</p></div></div>
+          <p class="clock-selection-note">Pulsa una hora para consultar las aplicaciones y los registros de esa franja.</p>
+          <div class="clock-layout">
+            <div id="hour-clock" class="hour-clock" role="group" aria-label="Reloj interactivo de 24 horas"></div>
+            <div class="clock-detail">
+              <div class="clock-detail-heading"><div><p class="eyebrow">HORA SELECCIONADA</p><strong id="clock-hour-label">00:00 — 01:00</strong></div><span id="clock-total-average" class="clock-total-average"></span></div>
+              <p id="clock-average-label" class="clock-average-label"></p>
+              <div id="clock-app-breakdown" class="clock-app-breakdown"></div>
+              <div id="clock-app-legend" class="clock-app-legend"></div>
+            </div>
+          </div>
+        </div>
+        <div class="explorer-controls">
+          <p class="clock-selection-note">Más abajo aparecen los registros originales que incluyen esa hora.</p>
+          <label class="date-control">DÍA
+            <select id="date-filter" aria-label="Filtrar por día"><option value="all">Todos los días</option></select>
+          </label>
+        </div>
+        <div class="selected-hour-banner"><div><span class="eyebrow">REGISTROS · FRANJA SELECCIONADA</span><strong id="selected-hour-label">00:00 — 01:00</strong></div><span id="result-count" class="result-count"></span></div>
+        <div id="app-filter" class="app-filter" role="group" aria-label="Filtrar por aplicación"></div>
+        <div id="entry-list" class="entry-list" aria-live="polite"></div>
+        <p class="interval-note"><span aria-hidden="true">ⓘ</span> Algunas franjas abarcan varias horas o se solapan. Se muestran tal como fueron registradas; no se reparte su duración entre las horas incluidas.</p>
+      </div>
+    </section>
+
+    <section id="patrones" class="apps-section section-shell">
+      <div class="section-heading">
+        <div><p class="eyebrow">04 — ALGUNOS PATRONES</p><h2>Las apps<br><em>por franja.</em></h2></div>
+        <p class="section-note">Cada entrada se agrupa por la hora a la que empieza su franja registrada. Los recuentos describen anotaciones; no reparten minutos entre las horas del intervalo.</p>
+      </div>
+      <div class="chart-card app-count-card">
+        <div class="chart-title-row"><div><h3>Registros por franja de inicio</h3><p>Aplicación indicada en cada entrada</p></div><span class="chart-key"><i class="key-multi"></i> N.º DE REGISTROS</span></div>
+        <div id="pattern-chart" class="pattern-chart"></div>
+        <div id="pattern-legend" class="pattern-legend"></div>
+      </div>
+    </section>
+
+    <section id="comportamiento" class="behavior-section section-shell">
+      <div class="section-heading">
+        <div><p class="eyebrow">05 — COMPORTAMIENTO OBSERVADO</p><h2>Algunas señales<br><em>en los registros.</em></h2></div>
+        <p class="section-note">Son patrones de las entradas anotadas. No explican por qué se usó una aplicación ni demuestran por sí solos una rutina.</p>
+      </div>
+      <div id="behavior-cards" class="behavior-cards"></div>
+    </section>
+
+    <section id="conclusiones" class="conclusions-section">
+      <div class="section-shell conclusions-grid">
+        <div><p class="eyebrow">06 — CONCLUSIONES</p><h2>Lo que permiten<br><em>decir los datos.</em></h2></div>
+        <div id="conclusion-copy" class="conclusion-copy"></div>
+      </div>
+    </section>
+
+    <section id="narrativa" class="narrative-section">
+      <div class="section-shell">
+        <div class="section-heading narrative-heading">
+          <div><p class="eyebrow">07 — NARRATIVA VISUAL</p><h2>Color, ritmo<br><em>y referentes.</em></h2></div>
+          <p class="section-note">Los registros se presentan por hora y aplicación junto con los patrones observados durante el periodo.</p>
+        </div>
+        <div class="design-language">
+          <div class="palette-block">
+            <p class="eyebrow">PALETA DE LA WEB</p>
+            <div class="palette-swatches">
+              <span class="palette-swatch" style="--swatch:#f7f6f1"><i></i>Marfil</span>
+              <span class="palette-swatch" style="--swatch:#b7c9b2"><i></i>Salvia</span>
+              <span class="palette-swatch" style="--swatch:#345447"><i></i>Verde oscuro</span>
+              <span class="palette-swatch" style="--swatch:#d45979"><i></i>Instagram</span>
+              <span class="palette-swatch" style="--swatch:#6553a4"><i></i>TikTok</span>
+              <span class="palette-swatch" style="--swatch:#34826a"><i></i>WhatsApp</span>
+              <span class="palette-swatch" style="--swatch:#397db5"><i></i>Waze</span>
+              <span class="palette-swatch" style="--swatch:#bc7b3b"><i></i>Risk</span>
+              <span class="palette-swatch" style="--swatch:#468c9d"><i></i>Safari</span>
+              <span class="palette-swatch" style="--swatch:#b18f29"><i></i>Fotos</span>
+            </div>
+          </div>
+          <div class="type-block">
+            <p class="eyebrow">TIPOGRAFÍAS</p>
+            <p class="type-sample type-display">Archivo Black <small>TÍTULOS</small></p>
+            <p class="type-sample type-body">DM Sans Regular <small>CUERPO</small></p>
+            <p class="type-sample type-label">DM Mono Medium <small>ETIQUETAS</small></p>
+          </div>
+        </div>
+
+        <div class="reference-intro"><p class="eyebrow">REFERENTES</p></div>
+        <div class="reference-journey">
+          <div class="reference-sticky">
+            <article class="reference-card" aria-live="polite">
+              <div class="reference-image-wrap"><img id="reference-image" src="buddhism.png" alt="Infografía Enlightenment del referente What is Buddhism? de Information is Beautiful"></div>
+              <div class="reference-copy">
+                <span id="reference-index" class="eyebrow">REFERENTE</span>
+                <h3 id="reference-title">What is Buddhism? · Information is Beautiful</h3>
+                <p id="reference-description">Explica las principales creencias, conceptos y enseñanzas del budismo mediante una infografía visual.</p>
+                <h4>Qué tomo</h4>
+                <ul id="reference-takeaways"><li>Un color diferente para cada aplicación.</li><li>Jerarquía visual para destacar los datos.</li><li>Información agrupada e infografías con datos y porcentajes.</li></ul>
+                <a id="reference-link" class="reference-link" href="https://informationisbeautiful.net/visualizations/buddhism-explained-key-beliefs-samsara-nirvana-dependent-origination-enlightenment-jhanas/" target="_blank" rel="noopener">Ver referente ↗</a>
+                <div id="reference-dots" class="reference-dots" aria-label="Referente actual"><span class="active"></span><span></span><span></span></div>
+              </div>
+            </article>
+          </div>
+          <div class="reference-scroll-steps" aria-hidden="true"><div class="reference-scroll-step" data-reference="0"></div><div class="reference-scroll-step" data-reference="1"></div><div class="reference-scroll-step" data-reference="2"></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="metodo" class="method-section">
+      <div class="section-shell method-grid">
+        <div><p class="eyebrow">NOTAS DE LECTURA</p><h2>Cómo leer<br><em>el registro.</em></h2></div>
+        <div class="method-copy">
+          <p>Los registros se transcribieron desde “Tiempo de uso” en Ajustes del iPhone. El periodo cubre del 20 de octubre al 3 de noviembre de 2026.</p>
+          <p>El conjunto contiene 120 entradas de aplicación y franja horaria, junto con 15 totales diarios.</p>
+          <p>Para el reloj, la duración de cada registro se reparte por igual entre las horas que abarca y luego se promedia entre los 15 días. El registro original da los minutos de la franja completa. Varias aplicaciones pueden aparecer durante una misma hora.</p>
+        </div>
+      </div>
+      <footer class="site-footer section-shell"><span>MI ACTIVIDAD DIGITAL · 2026</span><a href="#inicio">Volver arriba ↑</a><span>FUENTE: TIEMPO DE USO EN IPHONE</span></footer>
+    </section>
+  </main>
 </body>
 </html>
