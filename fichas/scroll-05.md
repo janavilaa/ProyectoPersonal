@@ -19,3 +19,14 @@ El texto se limita a lo que los recuentos permiten describir. No atribuye el uso
 ## Resultado final
 
 Una sección de observaciones vinculadas a las entradas recopiladas, acompañada de una nota sobre los límites de interpretación.
+
+
+## Decisión de Jana y verificación
+
+**Decide Jana:** Jana pidió incluir patrones y hábitos observables en sus datos. La interpretación se limitó a describir lo que muestran las entradas.
+
+**Genera la IA:** la estructura, los textos y los elementos visuales descritos en esta ficha, siguiendo esa decisión.
+
+**Verifican el resultado:** Jana revisa que el resultado visual y de uso responda a su petición. La IA contrasta el contenido y, cuando corresponde, los cálculos o enlaces con los datos y criterios del proyecto.
+
+**Comprobación concreta:** Jana comprueba que las observaciones representan su registro y no atribuyen causas. La IA coteja las frases con los recuentos y señala cualquier conclusión que exceda los datos.

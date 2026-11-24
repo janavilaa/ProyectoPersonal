@@ -23,3 +23,14 @@ Jana pidió que la pregunta y la explicación quedaran centradas en la portada, 
 ## Resultado final
 
 La primera pantalla centra la pregunta y presenta debajo la explicación completa. La tarjeta de datos citados está colocada en un lateral. Los datos externos enlazan a [PubMed](https://pubmed.ncbi.nlm.nih.gov/39097657/) y [JAMA Pediatrics](https://jamanetwork.com/journals/jamapediatrics/fullarticle/2822859).
+
+
+## Decisión de Jana y verificación
+
+**Decide Jana:** Jana decidió centrar la pregunta y su explicación, y colocar al lado datos estadísticos con sus fuentes.
+
+**Genera la IA:** la estructura, los textos y los elementos visuales descritos en esta ficha, siguiendo esa decisión.
+
+**Verifican el resultado:** Jana revisa que el resultado visual y de uso responda a su petición. La IA contrasta el contenido y, cuando corresponde, los cálculos o enlaces con los datos y criterios del proyecto.
+
+**Comprobación concreta:** Jana comprueba que la portada refleja esa jerarquía y que las fuentes se abren. La IA contrasta los textos y enlaces con lo pedido y con las fuentes citadas.

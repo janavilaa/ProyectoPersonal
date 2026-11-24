@@ -19,3 +19,14 @@ Jana pidió quitar el texto que explicaba que las imágenes y descripciones camb
 ## Resultado final
 
 La sección reúne los colores actualmente aplicados, las tres familias tipográficas solicitadas y los referentes con sus imágenes, enlaces y aspectos visuales que se trasladan al proyecto.
+
+
+## Decisión de Jana y verificación
+
+**Decide Jana:** Jana eligió Archivo Black, DM Sans Regular y DM Mono Medium, y pidió incluir la paleta y sus tres referentes en una misma sección.
+
+**Genera la IA:** la estructura, los textos y los elementos visuales descritos en esta ficha, siguiendo esa decisión.
+
+**Verifican el resultado:** Jana revisa que el resultado visual y de uso responda a su petición. La IA contrasta el contenido y, cuando corresponde, los cálculos o enlaces con los datos y criterios del proyecto.
+
+**Comprobación concreta:** Jana comprueba que aparecen los tres referentes, sus imágenes y las decisiones visuales elegidas. La IA revisa nombres, enlaces y correspondencia entre la sección y las referencias aportadas.

@@ -19,3 +19,14 @@ Jana indicó que el total del 20/10 debía incorporarse como 5 h 47 min y mostra
 ## Resultado final
 
 La sección presenta los totales diarios y el alcance de la recopilación. El reloj ya no está aquí; aparece junto a los resultados horarios en el scroll siguiente.
+
+
+## Decisión de Jana y verificación
+
+**Decide Jana:** Jana pidió mostrar los totales diarios y las aplicaciones registradas, sin destacar el total del 20/10.
+
+**Genera la IA:** la estructura, los textos y los elementos visuales descritos en esta ficha, siguiendo esa decisión.
+
+**Verifican el resultado:** Jana revisa que el resultado visual y de uso responda a su petición. La IA contrasta el contenido y, cuando corresponde, los cálculos o enlaces con los datos y criterios del proyecto.
+
+**Comprobación concreta:** Jana comprueba que el gráfico permite leer los días y que no resalta una fecha. La IA contrasta los valores con la tabla de datos del proyecto.
